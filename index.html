@@ -17,7 +17,7 @@
 <body>
     <h1>goo.gl search</h1>
     <form id="inputForm">
-        <label for="input">Enter a 6-letter/number tag:</label><br>
+        <label for="input">Enter a 5-letter/number tag:</label><br>
         <input type="text" id="input" name="input" pattern="[a-zA-Z0-9]{6}" required>
         <button type="submit">[ locate ]</button>
     </form>
@@ -41,7 +41,7 @@
         function generateRandomCode() {
             var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var randomCode = "";
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 5; i++) {
                 randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             return randomCode;
