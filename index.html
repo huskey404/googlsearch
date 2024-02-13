@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>goo.gl search</h1>
+    <form id="inputForm">
+        <label for="input">Enter a 6-letter/number tag:</label><br>
+        <input type="text" id="input" name="input" pattern="[a-zA-Z0-9]{6}" required>
+        <button type="submit">[ locate ]</button>
+    </form>
+    <button id="randomBtn">[ random link ]</button>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById("inputForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var input = document.getElementById("input").value;
+            var url = "https://goo.gl/" + input;
+            document.getElementById("output").innerHTML = "<a href='" + url + "' target='_blank'>" + url + "</a>";
+        });
+
+        document.getElementById("randomBtn").addEventListener("click", function() {
+            var randomCode = generateRandomCode();
+            var url = "https://goo.gl/" + randomCode;
+            document.getElementById("output").innerHTML = "<a href='" + url + "' target='_blank'>" + url + "</a>";
+        });
+
+        function generateRandomCode() {
+            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var randomCode = "";
+            for (var i = 0; i < 6; i++) {
+                randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return randomCode;
+        }
+    </script>
+</body>
+</html>
